@@ -1,0 +1,19 @@
+{
+    "name": "lampdev/hubspot-api-test",
+    "description": "HubSpot API Integration Package [TEST]",
+    "type": "library",
+    "authors": [
+        {
+            "name": "LampDev",
+            "email": "orders@lamp-dev.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Lampdev\\Hubspot\\": "library/"
+        }
+    },
+    "require": {
+        "guzzlehttp/guzzle": "^7.0"
+    }
+}
