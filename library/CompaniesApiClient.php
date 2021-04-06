@@ -8,6 +8,17 @@ namespace Lampdev\Hubspot;
 class CompaniesApiClient extends ApiClientAbstract
 {
     /**
+     * Return API Base URL
+     * add companies endpoint path
+     *
+     * @return string
+     */
+    protected function getApiBaseUrl() : string
+    {
+        return (parent::getApiBaseUrl() . '/companies');
+    }
+
+    /**
      * Find Company by Provided Filter
      *
      * @throws HubspotException

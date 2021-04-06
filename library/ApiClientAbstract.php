@@ -40,7 +40,7 @@ abstract class ApiClientAbstract
      *
      * @return void
      */
-    final private function setConfig(array $config)
+    private function setConfig(array $config)
     {
         if (empty($config['api_key'])) {
             throw new HubspotException(
