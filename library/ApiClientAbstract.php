@@ -11,7 +11,7 @@ use GuzzleHttp\Exception\GuzzleException;
  */
 abstract class ApiClientAbstract
 {
-    private const API_URL               = 'http://https://api.hubapi.com/crm/v3/objects/';
+    private const API_URL               = 'https://api.hubapi.com/crm/v3/objects/';
     private const API_KEY_FIELD_NAME    = 'hapikey';
     private const API_PARSE_JSON_ASSOC  = true;
     private const API_ENDPOINT_SEARCH   = 'search';

@@ -15,7 +15,7 @@ class CompaniesApiClient extends ApiClientAbstract
      */
     protected function getApiBaseUrl() : string
     {
-        return (parent::getApiBaseUrl() . '/companies');
+        return (parent::getApiBaseUrl() . 'companies/');
     }
 
     /**
