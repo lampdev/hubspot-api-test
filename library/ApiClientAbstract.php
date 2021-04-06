@@ -116,19 +116,33 @@ abstract class ApiClientAbstract
                 $requestParams
             );
         } catch (GuzzleException $exception) {
+            if ($exception->hasResponse()) {
+                $errDetail = json_decode(
+                    $exception->getResponse()->getBody()->getContents(),
+                    self::API_PARSE_JSON_ASSOC
+                );
+
+                if (!empty($errDetail['status'])) {
+                    throw new HubspotException (
+                        (
+                            'API Returned Error [' .
+                            $errDetail['status'] .
+                            ']: ' .
+                            $errDetail['message'] .
+                            ' (correlationId:' .
+                            $errDetail['correlationId'] .
+                            ').'
+                        ),
+                        0,
+                        $exception
+                    );
+                }
+            }
+
             throw new HubspotException (
-                'API Request Failed.',
+                'API Request Failed. Details: ' . $exception->getMessage(),
                 0,
                 $exception
-            );
-        }
-
-        $httpStatusCode = $httpResponse->getStatusCode();
-
-        if ($httpStatusCode < 200 || $httpStatusCode > 299) {
-            throw new HubspotException(
-                'API Responded with [' . $httpStatusCode . ']: ' .
-                $httpResponse->getReasonPhrase() . '.'
             );
         }
 

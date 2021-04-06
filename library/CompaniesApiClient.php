@@ -55,12 +55,12 @@ class CompaniesApiClient extends ApiClientAbstract
      *
      * @param integer $companyId Company ID
      * @param array $properties Properties Array Key => Value
-     * @return bool|int returns Company ID or false
+     * @return bool|array returns Company Properties Array or false
      */
     public function updateCompany(
         int $companyId,
         array $properties
-    ) : bool|int {
+    ) : bool|array {
         if ($companyId <= 0) {
             throw new HubspotException('Bad Company ID provided!');
         }
@@ -70,7 +70,7 @@ class CompaniesApiClient extends ApiClientAbstract
             $this->validateAndFilterProperties($properties)
         );
 
-        return ($response['id'] ?? false);
+        return ($response['properties'] ?? false);
     }
 
     private function validateAndFilterProperties(array $properties)
