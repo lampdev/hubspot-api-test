@@ -172,9 +172,7 @@ abstract class ApiClientAbstract
         }
 
         $requestData = [
-            'filterGroups' => [
-                'filters' => null
-            ],
+            'filterGroups' => [],
             'sorts'      => $sorts,
             'properties' => $returnProps,
             'limit'      => $limit,
@@ -186,10 +184,12 @@ abstract class ApiClientAbstract
         // to make possible the method to accept [key => value]
         // search filter array, anyway, this can be easily changed here
         foreach ($conditions as $conditionField => $conditionValue) {
-            $requestData['filterGroups']['filters'][] = [
-                'value'        => $conditionValue,
-                'propertyName' => $conditionField,
-                'operator'     => self::OPERATOR_NAME_EQUALS
+            $requestData['filterGroups'][] = [
+                'filters' => [[
+                    'value'        => $conditionValue,
+                    'propertyName' => $conditionField,
+                    'operator'     => self::OPERATOR_NAME_EQUALS
+                ]]
             ];
         }
 

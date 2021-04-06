@@ -41,11 +41,11 @@ class CompaniesApiClient extends ApiClientAbstract
             ['id']
         );
 
-        if (empty($response['result'])) {
+        if (empty($response['results'])) {
             return false;
         }
 
-        return array_shift($response['result'])['id'];
+        return array_shift($response['results'])['id'];
     }
 
     /**
