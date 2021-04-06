@@ -123,7 +123,7 @@ abstract class ApiClientAbstract
                 );
 
                 if (!empty($errDetail['status'])) {
-                    throw new HubspotException (
+                    throw new HubspotException(
                         (
                             'API Returned Error [' .
                             $errDetail['status'] .
@@ -139,7 +139,7 @@ abstract class ApiClientAbstract
                 }
             }
 
-            throw new HubspotException (
+            throw new HubspotException(
                 'API Request Failed. Details: ' . $exception->getMessage(),
                 0,
                 $exception
